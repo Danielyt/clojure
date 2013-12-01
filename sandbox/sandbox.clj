@@ -1,6 +1,11 @@
-(def my-stack ["lettuce" "cheese" "marmite"])
+(def l '(:lettuce :tomato :cheese))
+(def v [:lettuce :tomato :cheese])
 
-(conj my-stack "salami")	; ["lettuce" "cheese" "marmite" "salami"]
-(peek my-stack)		; "marmite"
-(pop my-stack)		; ["lettuce" "cheese"]
-(pop [])			; java.lang.IllegalStateException: Can't pop empty vector
+(conj l :salami)	; (:salami :lettuce :tomato :cheese)
+(conj v :salami)	; [:lettuce :tomato :cheese :salami]
+
+(peek l)		; :lettuce
+(peek v)		; :cheese
+
+(pop l)		; (:tomato :cheese)
+(pop v)		; [:lettuce :tomato]
