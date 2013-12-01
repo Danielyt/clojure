@@ -1,6 +1,6 @@
-(def my-bag ["laptop" "knife" "earphones" "phone"])
-(def stuff-for-fmi ["clicker" "piece of mind" "Snickers"])
+(def my-stack ["lettuce" "cheese" "marmite"])
 
-(conj my-bag "ФЗФ file") ; ["laptop" "knife" "earphones" "phone" "ФЗФ file"]
-(into my-bag stuff-for-fmi) ; ["laptop" "knife" "earphones" "phone" "clicker" "piece of mind" "Snickers"]
-(my-bag 1) ; "knife" 
+(conj my-stack "salami")	; ["lettuce" "cheese" "marmite" "salami"]
+(peek my-stack)		; "marmite"
+(pop my-stack)		; ["lettuce" "cheese"]
+(pop [])			; java.lang.IllegalStateException: Can't pop empty vector
