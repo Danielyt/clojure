@@ -14,13 +14,12 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(def person
-  {:name "John Smith"
-  :sex "male"
-  :age 35})
-
-(person :name)	; “John Smith“
-(:name person)	; “John Smith“
-
 (keys person)	; (:age :name :sex)
 (vals person)	; (35 “John Smith" “male”)
+
+(def numbers {:one 1 :two 2 :three 3})
+
+(assoc numbers :four 4)		; {:one 1, :three 3, :two 2, :four 4}
+(dissoc numbers :two)		; {:one 1, :three 3}
+
+(merge numbers {:four 4 :five 5})	; {:one 1, :five 5, :three 3, :two 2, :four 4}
