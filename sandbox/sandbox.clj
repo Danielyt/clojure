@@ -14,19 +14,9 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(def number (atom 0))
-(defn slow-inc [x]
-  (printf "Incrementing %s slowly...\n" x)
-  (Thread/sleep 100)
-  (inc x))
-(defn very-slow-inc [x]
-  (printf "Incrementing %s very slowly...\n" x)
-  (Thread/sleep 500) (inc x))
-(future (swap! number very-slow-inc))
-(future (swap! number slow-inc))
-
-
-; Incrementing 0 very slowly…
-; Incrementing 0 slowly…
-; Incrementing 1 very slowly... 
-
+(def incorrect (atom 0))
+(dotimes [_ 10000]
+  (future (let [new-val (inc @incorrect)]
+            (swap! incorrect (fn [_] new-val)))))
+(Thread/sleep 2000)
+@incorrect	; 7011
