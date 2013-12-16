@@ -9,3 +9,7 @@
 
 (pop l)		; (:tomato :cheese)
 (pop v)		; [:lettuce :tomato]
+
+(defn fib [n]
+  (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
+    (nth fib-seq n)))
