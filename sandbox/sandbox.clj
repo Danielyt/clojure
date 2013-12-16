@@ -14,7 +14,10 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(let [r (range 1e9)] [(first r) (last r)])	; [0 999999999]
-(let [r (range 1e9)] [(last r) (first r)])
-;java.lang.OutOfMemoryError: GC overhead limit exceeded
+(def f (future (Thread/sleep 10000) (println "done") 100))
+
+@f		; done 100
+
+@f		; 100
+
 
