@@ -14,10 +14,11 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(def f (future (Thread/sleep 10000) (println "done") 100))
-
-@f		; done 100
-
-@f		; 100
+(def counter (atom 1))
+@counter		;1
+(swap! counter inc)
+@counter		; 2
+(swap! counter (fn [n] (/ 1 n)))
+@counter		; 1/2
 
 
