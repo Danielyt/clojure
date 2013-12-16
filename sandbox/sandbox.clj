@@ -14,9 +14,9 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(def incorrect (atom 0))
-(dotimes [_ 10000]
-  (future (let [new-val (inc @incorrect)]
-            (swap! incorrect (fn [_] new-val)))))
-(Thread/sleep 2000)
-@incorrect	; 7011
+(def counter (atom 2 :validator pos?))
+
+(swap! counter dec)	; 1
+@counter		; 1
+(swap! counter dec)	; java.lang.IllegalStateException: Invalid reference state
+@counter		; 1
