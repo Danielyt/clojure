@@ -15,8 +15,8 @@
     (nth fib-seq n)))
 
 (def person
-  {:name “John Smith"
-  :sex “male"
+  {:name "John Smith"
+  :sex "male"
   :age 35})
 
 (person :name)	; “John Smith“
