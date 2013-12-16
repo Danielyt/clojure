@@ -14,12 +14,8 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(keys person)	; (:age :name :sex)
-(vals person)	; (35 “John Smith" “male”)
+(def people #{"Clayton Shantelle" "Pauleen Linton" "Aniyah Deeann"})
+(conj people "Rosamund Maxwell")		; #{“Clayton Shantelle" “Pauleen Linton" "Aniyah Deeann“ “Rosamund Maxwell”}
 
-(def numbers {:one 1 :two 2 :three 3})
-
-(assoc numbers :four 4)		; {:one 1, :three 3, :two 2, :four 4}
-(dissoc numbers :two)		; {:one 1, :three 3}
-
-(merge numbers {:four 4 :five 5})	; {:one 1, :five 5, :three 3, :two 2, :four 4}
+(conj people "Pauleen Linton")		; #{“Clayton Shantelle" “Pauleen Linton" "Aniyah Deeann"}
+(disj people "Pauleen Linton")		; #{“Clayton Shantelle“ “Aniyah Deeann"})
