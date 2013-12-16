@@ -13,3 +13,14 @@
 (defn fib [n]
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
+
+(def person
+  {:name “John Smith"
+  :sex “male"
+  :age 35})
+
+(person :name)	; “John Smith“
+(:name person)	; “John Smith“
+
+(keys person)	; (:age :name :sex)
+(vals person)	; (35 “John Smith" “male”)
