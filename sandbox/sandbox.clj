@@ -14,8 +14,9 @@
   (let [fib-seq (lazy-cat [1 1] (map + (rest fib-seq) fib-seq))]
     (nth fib-seq n)))
 
-(def primes #{13 11 7 5 3 2})
-(primes 11)		; 11
-(primes 4)		; nil
-(contains? primes 7)	; true
-(contains? primes 4)	; false
+(use 'clojure.set)
+(difference #{1 2 3 4} #{2 4 6 8})		; #{1 3}
+(intersection #{1 2 3} #{2 3 4 5})		; #{2 3}
+(subset? #{1 2} #{0 1 2 3})		; true
+(union #{0 1 2 3} #{2 3 4 5})		; #{0 1 2 3 4 5}
+
